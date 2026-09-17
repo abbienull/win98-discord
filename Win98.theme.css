@@ -1,0 +1,781 @@
+/**
+ * @name Win98
+ * @author abbienull
+ * @authorLink https://github.com/abbienull
+ * @source https://github.com/abbienull
+ * @version 1.0.0
+ * @description Windows 98 style theme for Discord. Follows your Discord light/dark setting. Inspired by the old WinClassic theme by D Mack, written from scratch.
+ */
+
+/*
+ *  it is 1998. you have 32MB of RAM and nothing but time.
+ *  C:\> _
+ *
+ *  if you are reading this: hi :3
+ */
+
+
+/* light is the default; .theme-dark comes after, so it wins :3 */
+:root, .theme-light, .visual-refresh {
+  --w98-face: #c0c0c0;
+  --w98-hi: #ffffff;
+  --w98-hi-soft: #dfdfdf;
+  --w98-lo: #808080;
+  --w98-edge: #000000;
+  --w98-input: #ffffff;
+  --w98-sel: #000080;
+  --w98-sel-text: #ffffff;
+  --w98-text: #000000;
+  --w98-muted: #555555;
+  --w98-disabled: #8a8a8a;
+  --w98-time: #505050;
+  --w98-link: #0000ee;
+  --w98-halo: #ffffff;
+  --w98-title-a: #000080;
+  --w98-title-b: #1084d0;
+  --w98-track-a: #c0c0c0;
+  --w98-track-b: #ffffff;
+  --w98-row-hover: #b4b4c8;
+  --w98-row-selected: #a8a8c4;
+  --w98-row-mention: #d4d09a;
+  --w98-tint-hover: rgba(0, 0, 128, .12);
+  --w98-tint-active: rgba(0, 0, 128, .2);
+  --w98-tint-subtle: rgba(0, 0, 0, .06);
+  --w98-badge: #e00000;
+  /* server list runs to the bottom of its own container; the panel floats over
+     the DM list only, so this one needs no gap :3 */
+  --w98-guilds-gap: 20px;
+  --w98-panel-gap: 72px;
+}
+
+.theme-dark, .theme-darker, .theme-midnight {
+  --w98-face: #2b2b2b;
+  --w98-hi: #5a5a5a;
+  --w98-hi-soft: #3c3c3c;
+  --w98-lo: #141414;
+  --w98-edge: #000000;
+  --w98-input: #1a1a1a;
+  --w98-sel: #1f3a8a;
+  --w98-sel-text: #ffffff;
+  --w98-text: #e6e6e6;
+  --w98-muted: #a0a0a0;
+  --w98-disabled: #6a6a6a;
+  --w98-time: #9a9a9a;
+  --w98-link: #7aa7ff;
+  --w98-halo: #000000;
+  --w98-title-a: #0a1a4a;
+  --w98-title-b: #1f3a8a;
+  --w98-track-a: #2b2b2b;
+  --w98-track-b: #3c3c3c;
+  --w98-row-hover: #34384f;
+  --w98-row-selected: #3a3f5c;
+  --w98-row-mention: #4a4520;
+  --w98-tint-hover: rgba(90, 120, 255, .15);
+  --w98-tint-active: rgba(90, 120, 255, .25);
+  --w98-tint-subtle: rgba(255, 255, 255, .05);
+  --w98-badge: #e00000;
+  /* server list runs to the bottom of its own container; the panel floats over
+     the DM list only, so this one needs no gap :3 */
+  --w98-guilds-gap: 20px;
+}
+
+:root, .theme-dark, .theme-light, .theme-darker, .theme-midnight, .visual-refresh {
+  --w98-raised: inset -1px -1px var(--w98-edge), inset 1px 1px var(--w98-hi), inset -2px -2px var(--w98-lo), inset 2px 2px var(--w98-hi-soft);
+  --w98-sunken: inset -1px -1px var(--w98-hi), inset 1px 1px var(--w98-lo), inset -2px -2px var(--w98-hi-soft), inset 2px 2px var(--w98-edge);
+
+  --background-primary: var(--w98-face);
+  --background-secondary: var(--w98-face);
+  --background-secondary-alt: var(--w98-face);
+  --background-tertiary: var(--w98-face);
+  --background-accent: var(--w98-lo);
+  --background-floating: var(--w98-face);
+  --background-mobile-primary: var(--w98-face);
+  --background-mobile-secondary: var(--w98-face);
+  --background-modifier-hover: var(--w98-tint-hover);
+  --background-modifier-active: var(--w98-tint-active);
+  --background-modifier-selected: var(--w98-sel);
+  --background-modifier-accent: var(--w98-lo);
+  --background-message-hover: var(--w98-tint-subtle);
+  --background-mod-subtle: var(--w98-tint-subtle);
+  --background-mod-normal: var(--w98-face);
+  --background-mod-strong: var(--w98-face);
+  --background-base-lowest: var(--w98-face);
+  --background-base-lower: var(--w98-face);
+  --background-base-low: var(--w98-face);
+  --background-surface-high: var(--w98-face);
+  --background-surface-higher: var(--w98-face);
+  --background-surface-highest: var(--w98-face);
+  --bg-base-primary: var(--w98-face);
+  --bg-base-secondary: var(--w98-face);
+  --bg-base-tertiary: var(--w98-face);
+  --bg-surface-overlay: var(--w98-face);
+  --bg-surface-raised: var(--w98-face);
+  --bg-mod-subtle: var(--w98-tint-hover);
+  --bg-mod-strong: var(--w98-tint-active);
+  --chat-background-default: var(--w98-face);
+  --app-frame-background: var(--w98-face);
+  --channeltextarea-background: var(--w98-input);
+  --input-background: var(--w98-input);
+  --modal-background: var(--w98-face);
+  --modal-footer-background: var(--w98-face);
+  --deprecated-card-bg: var(--w98-face);
+  --card-background-default: var(--w98-face);
+  --card-primary-bg: var(--w98-face);
+  --card-secondary-bg: var(--w98-face);
+  --user-profile-overlay-background: var(--w98-face);
+  --user-profile-overlay-background-hover: var(--w98-row-hover);
+  --profile-body-background-color: var(--w98-face);
+
+  --border-subtle: var(--w98-lo);
+  --border-faint: var(--w98-lo);
+  --border-normal: var(--w98-lo);
+  --border-strong: var(--w98-edge);
+
+  --text-normal: var(--w98-text);
+  --text-default: var(--w98-text);
+  --text-primary: var(--w98-text);
+  --text-strong: var(--w98-text);
+  --text-muted: var(--w98-muted);
+  --text-secondary: var(--w98-muted);
+  --text-tertiary: var(--w98-muted);
+  --text-subtle: var(--w98-muted);
+  --text-low-contrast: var(--w98-muted);
+  --text-brand: var(--w98-sel);
+  --text-link: var(--w98-link);
+  --header-primary: var(--w98-text);
+  --header-secondary: var(--w98-muted);
+  --channels-default: var(--w98-text);
+  --channel-icon: var(--w98-muted);
+  --interactive-normal: var(--w98-text);
+  --interactive-hover: var(--w98-text);
+  --interactive-active: var(--w98-sel-text);
+  --interactive-muted: var(--w98-disabled);
+  --icon-default: var(--w98-text);
+  --icon-strong: var(--w98-text);
+  --icon-muted: var(--w98-muted);
+  --icon-secondary: var(--w98-muted);
+  --status-text: var(--w98-text);
+
+  --radius-xs: 0;
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --radius-xl: 0;
+}
+
+code, pre, pre * {
+  font-family: "Courier New", monospace !important;
+}
+
+body, #app-mount {
+  background: var(--w98-face) !important;
+  color: var(--w98-text);
+}
+
+*:not([class*="avatar"]):not([class*="status"]):not(img):not(circle):not(rect) {
+  border-radius: 0 !important;
+}
+
+
+/* :3 */
+[class*="titleBar_"] {
+  background: linear-gradient(90deg, var(--w98-title-a), var(--w98-title-b)) !important;
+}
+
+[class*="titleBar_"], [class*="titleBar_"] *,
+[class*="bar_"] [class*="title_"] {
+  color: #fff !important;
+}
+
+
+[class*="guilds_"], [class*="sidebar_"], [class*="chat_"], [class*="membersWrap_"],
+[class*="userPanelOuter_"], [class*="profilePanel_"] {
+  background: var(--w98-face) !important;
+  box-shadow: var(--w98-raised) !important;
+  border: none !important;
+}
+
+section[class*="title_"], [class*="upperContainer_"] {
+  background: var(--w98-face) !important;
+  box-shadow: inset 0 -1px var(--w98-lo), inset 0 -2px var(--w98-hi) !important;
+}
+
+[class*="searchBar_"], [class*="searchBar_"] input {
+  background: var(--w98-input) !important;
+  box-shadow: var(--w98-sunken) !important;
+  color: var(--w98-text) !important;
+}
+
+
+[data-list-item-id="guildsnav___home"] svg,
+[data-list-item-id="guildsnav___home"] img,
+[data-list-item-id="guildsnav___home"] [class*="childWrapper_"] > * {
+  display: none !important;
+}
+
+[data-list-item-id="guildsnav___home"],
+[data-list-item-id="guildsnav___home"] [class*="childWrapper_"] {
+  background-color: var(--w98-face) !important;
+  box-shadow: var(--w98-raised) !important;
+}
+
+[data-list-item-id="guildsnav___home"] [class*="childWrapper_"] {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' shape-rendering='crispEdges'%3E%3Cpath fill='%23f25022' d='M1 2h2v1h2v1h2v5H5V8H3V7H1z'/%3E%3Cpath fill='%237fba00' d='M8 3h2v1h2v1h3v5h-2V9h-2V8H8z'/%3E%3Cpath fill='%2300a4ef' d='M1 8h2v1h2v1h2v5H5v-1H3v-1H1z'/%3E%3Cpath fill='%23ffb900' d='M8 9h3v1h2v1h2v5h-3v-1h-2v-1H8z'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: 32px 32px !important;
+  image-rendering: pixelated;
+}
+
+[class*="guilds_"] [class*="pill_"] span {
+  background: var(--w98-edge) !important;
+}
+
+/* ping count. ignore it, go outside :3 */
+[class*="guilds_"] [class*="numberBadge_"] {
+  background: var(--w98-badge) !important;
+  color: #fff !important;
+  font-weight: bold !important;
+  box-shadow: 0 0 0 1px #000 !important;
+}
+
+
+[class*="sidebar_"] header, [class*="sidebar_"] header *,
+[class*="sidebar_"] [class*="headerContent_"], [class*="sidebar_"] [class*="headerContent_"] *,
+[class*="sidebar_"] h1, [class*="sidebar_"] h2 {
+  color: var(--w98-text) !important;
+}
+
+[class*="containerDefault_"] [class*="name_"],
+h2[class*="privateChannelsHeaderContainer_"] {
+  color: var(--w98-text) !important;
+  font-weight: bold;
+}
+
+[class*="containerDefault_"] [class*="modeSelected_"],
+[class*="containerDefault_"] [class*="modeSelected_"] [class*="link_"],
+[class*="channel_"][class*="selected_"] > [class*="interactive_"],
+[class*="channel_"] [class*="interactiveSelected_"],
+[class*="privateChannels_"] [class*="selected_"] > [class*="interactive_"] {
+  background: var(--w98-sel) !important;
+}
+
+[class*="modeSelected_"] *,
+[class*="interactiveSelected_"] *,
+[class*="channel_"][class*="selected_"] * {
+  color: var(--w98-sel-text) !important;
+}
+
+[class*="containerDefault_"] [class*="link_"]:hover,
+[class*="channel_"] [class*="interactive_"]:hover {
+  background: var(--w98-tint-hover) !important;
+}
+
+/* on a call the panel is ~100px taller, so the DM list backs off by that much
+   and its slider stays level with the server one. set the gap DIRECTLY here:
+   a calc() on :root would resolve before this rule ever applies :3 */
+body:has([class*="rtcConnectionStatus"]) {
+  --w98-panel-gap: 172px;
+}
+
+[class*="sidebar_"] nav [class*="scroller_"],
+[class*="privateChannels_"] [class*="scroller_"] {
+  margin-bottom: var(--w98-panel-gap) !important;
+  max-height: calc(100% - var(--w98-panel-gap)) !important;
+}
+
+/* the server list scroller, found by what it contains -- class hashes change,
+   guildsnav ids do not :3 */
+nav[class*="guilds_"] [class*="scroller_"],
+[class*="scroller_"]:has([data-list-item-id^="guildsnav"]) {
+  margin-bottom: var(--w98-guilds-gap) !important;
+  max-height: calc(100% - var(--w98-guilds-gap)) !important;
+}
+
+
+[class*="panels_"] {
+  position: absolute;
+  left: 6px !important;
+  right: 6px !important;
+  bottom: 6px !important;
+  width: auto !important;
+  margin: 0 !important;
+  padding: 2px !important;
+  box-sizing: border-box !important;
+  background: var(--w98-face) !important;
+  box-shadow: none !important;
+  border: none !important;
+  overflow: visible !important;
+  z-index: 1;
+}
+
+[class*="panels_"]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  box-shadow: var(--w98-raised);
+  pointer-events: none;
+  z-index: 5;
+}
+
+[class*="panels_"] > *,
+[class*="panels_"] [class*="container_"] {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+[class*="panels_"] [class*="nameplate"],
+[class*="panels_"] video {
+  display: none !important;
+}
+
+[class*="panels_"] [class*="nameTag_"],
+[class*="panels_"] [class*="title_"] {
+  text-shadow: none !important;
+}
+
+[class*="panels_"] [class*="subtext_"],
+[class*="panels_"] [class*="customStatus_"],
+[class*="panels_"] [class*="hovered_"],
+[class*="panels_"] [class*="title_"],
+[class*="activity_"], [class*="activityText_"], [class*="customStatus_"],
+[class*="subText_"], [class*="subtext_"] {
+  color: var(--w98-text) !important;
+}
+
+
+/* server icons: 98 had no rounded corners and no blobs. drop discord's svg
+   blob mask, square everything off, give each tile a raised edge :3 */
+foreignObject {
+  mask: none !important;
+}
+
+/* every icon discord blobs: guild list, soundboard rail, folder previews */
+[class*="blobContainer"] img,
+[class*="blobContainer"] [class*="childWrapper_"],
+[class*="soundButton"] img,
+[class*="wrapper__0c74f"] img {
+  border-radius: 0 !important;
+}
+
+[data-list-item-id^="guildsnav"],
+[data-list-item-id^="guildsnav"] img,
+[data-list-item-id^="guildsnav"] [class*="childWrapper_"],
+[class*="folderIconWrapper_"],
+[class*="folderPreviewGuildIcon_"] {
+  border-radius: 0 !important;
+}
+
+[data-list-item-id^="guildsnav"],
+[class*="folderIconWrapper_"] {
+  box-shadow: var(--w98-raised) !important;
+  background-color: var(--w98-face) !important;
+}
+
+/* the little pill that marks unread/selected is a rounded blob too */
+[class*="guilds_"] [class*="item_"],
+[class*="scroller_"]:has([data-list-item-id^="guildsnav"]) [class*="item_"] {
+  border-radius: 0 !important;
+  background: var(--w98-edge) !important;
+}
+
+/* toggles: sunken track, raised knob -- a 98 scrollbar in miniature :3
+   role="switch" is semantic, so no class hash to chase */
+div[role="switch"]:not([class*="panels_"] *):not(:has(svg[class*="icon"])) {
+  border-radius: 0 !important;
+  background: var(--w98-input) !important;
+  box-shadow: var(--w98-sunken) !important;
+  transition: none !important;
+}
+
+div[role="switch"][aria-checked="true"]:not([class*="panels_"] *):not(:has(svg[class*="icon"])) {
+  background: var(--w98-sel) !important;
+}
+
+div[role="switch"]:not([class*="panels_"] *):not(:has(svg[class*="icon"])) > div,
+div[role="switch"]:not([class*="panels_"] *):not(:has(svg[class*="icon"])) [class*="slider"],
+div[role="switch"]:not([class*="panels_"] *):not(:has(svg[class*="icon"])) circle,
+div[role="switch"]:not([class*="panels_"] *):not(:has(svg[class*="icon"])) rect {
+  border-radius: 0 !important;
+  rx: 0 !important;
+  ry: 0 !important;
+  fill: var(--w98-face) !important;
+  background: var(--w98-face) !important;
+  box-shadow: var(--w98-raised) !important;
+  transition: none !important;
+}
+
+/* mic + headphone buttons are role="switch" too -- they keep discord's look */
+button[role="switch"] {
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+/* soundboard tiles: proper chunky 98 buttons, pressed look and all :3 */
+[class*="soundButton"] {
+  border: none !important;
+  border-radius: 0 !important;
+  background: var(--w98-face) !important;
+  box-shadow: var(--w98-raised) !important;
+  color: var(--w98-text) !important;
+}
+
+[class*="soundButton"]:hover {
+  background: var(--w98-face) !important;
+}
+
+[class*="soundButton"]:active {
+  box-shadow: var(--w98-sunken) !important;
+}
+
+[class*="soundButton"] [class*="name"],
+[class*="soundButton"] [class*="label"] {
+  color: var(--w98-text) !important;
+  text-shadow: none !important;
+}
+
+/* Invite to Group DM -- the only button down there, so centre it :3 */
+[class*="membersWrap_"] button {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+[class*="membersWrap_"] button > [class*="contents_"] {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+[class*="membersGroup_"] {
+  color: var(--w98-text) !important;
+  font-weight: bold;
+}
+
+[class*="member_"] {
+  position: relative !important;
+  box-sizing: border-box !important;
+  width: calc(100% - 12px) !important;
+  max-width: none !important;
+  margin: 2px 6px !important;
+  overflow: hidden !important;
+  background: var(--w98-face) !important;
+}
+
+/* every member gets a little bevel. equality :3 */
+[class*="member_"]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  box-shadow: var(--w98-raised);
+  pointer-events: none;
+  z-index: 5;
+}
+
+[class*="member_"] [class*="layout_"] {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+[class*="member_"] [class*="content_"] {
+  min-width: 0 !important;
+}
+
+[class*="member_"] [class*="name_"],
+[class*="member_"] [class*="username_"]:not([style*="color"]),
+[class*="member_"] [class*="name_"] span:not([style*="color"]) {
+  color: var(--w98-text) !important;
+}
+
+[class*="member_"]:has([class*="nameplate"] img, [class*="nameplate"] video) [class*="name_"] {
+  text-shadow: 0 0 2px var(--w98-halo), 0 0 2px var(--w98-halo);
+}
+
+[class*="member_"] [class*="nameplate"],
+[class*="member_"] [class*="nameplate"] img,
+[class*="member_"] [class*="nameplate"] video {
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+}
+
+[class*="member_"][class*="offline_"] {
+  opacity: 1 !important;
+  background: transparent !important;
+}
+
+[class*="member_"][class*="offline_"]::after {
+  box-shadow: none;
+}
+
+[class*="member_"][class*="offline_"] > * {
+  opacity: .5 !important;
+  filter: grayscale(1) !important;
+}
+
+[class*="member_"][class*="offline_"] [class*="name_"],
+[class*="member_"][class*="offline_"] [class*="username_"] {
+  color: var(--w98-muted) !important;
+  text-shadow: none !important;
+  font-style: italic;
+}
+
+[class*="member_"][class*="offline_"]:hover > * {
+  opacity: .85 !important;
+  filter: none !important;
+}
+
+[class*="member_"][class*="offline_"]:hover::after {
+  box-shadow: var(--w98-raised);
+}
+
+
+[class*="chatContent_"] [class*="messagesWrapper_"] {
+  margin: 4px 6px 0 !important;
+  overflow: hidden !important;
+  background: var(--w98-face) !important;
+  box-shadow: var(--w98-sunken) !important;
+}
+
+[class*="messagesWrapper_"] [class*="scroller_"] {
+  background: transparent !important;
+  padding-bottom: 0 !important;
+}
+
+[class*="messagesWrapper_"] > [class*="managedReactiveScroller_"] {
+  inset: 2px !important;
+}
+
+[class*="chatContent_"] > form,
+form[class*="form_"] {
+  position: relative !important;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+[class*="channelTextArea_"] {
+  margin-top: 6px !important;
+}
+
+[class*="channelTextArea_"] [class*="scrollableContainer_"],
+[class*="channelTextArea_"] > [class*="inner_"] {
+  background: var(--w98-input) !important;
+  box-shadow: var(--w98-sunken) !important;
+}
+
+li[class*="messageListItem_"] > [class*="message_"]:hover {
+  background: var(--w98-row-hover) !important;
+}
+
+[class*="message_"][class*="selected_"] {
+  background: var(--w98-row-selected) !important;
+}
+
+[class*="message_"][class*="mentioned_"] {
+  background: var(--w98-row-mention) !important;
+}
+
+[class*="mentioned_"]::before {
+  background: var(--w98-sel) !important;
+}
+
+[class*="message_"] [class*="username_"] {
+  font-weight: bold !important;
+}
+
+[class*="message_"] [class*="timestamp_"],
+[class*="message_"] time {
+  color: var(--w98-time) !important;
+  font-size: 11px !important;
+}
+
+[class*="messageContent_"] {
+  color: var(--w98-text) !important;
+}
+
+[class*="message_"] [class*="avatar_"] {
+  box-shadow: var(--w98-sunken);
+}
+
+[class*="divider_"][class*="hasContent_"] [class*="content_"] {
+  padding: 1px 8px !important;
+  background: var(--w98-face) !important;
+  box-shadow: var(--w98-raised) !important;
+  color: var(--w98-text) !important;
+}
+
+[class*="newMessagesBar_"], [class*="unreadMentionsBar_"] {
+  background: var(--w98-sel) !important;
+  box-shadow: var(--w98-raised) !important;
+  color: #fff !important;
+}
+
+[class*="buttonsInner_"] {
+  background: var(--w98-face) !important;
+  box-shadow: var(--w98-raised) !important;
+}
+
+[class*="embedFull_"], article[class*="embed"] {
+  background: var(--w98-face) !important;
+  box-shadow: var(--w98-raised) !important;
+  border-left: 4px solid var(--w98-sel) !important;
+}
+
+code[class*="inline"], pre code, [class*="markup_"] code {
+  background: var(--w98-input) !important;
+  box-shadow: var(--w98-sunken) !important;
+  color: var(--w98-text) !important;
+  border: none !important;
+}
+
+blockquote, [class*="blockquoteDivider_"] {
+  background: var(--w98-lo) !important;
+}
+
+[class*="reactions_"] [class*="reaction_"] {
+  background: var(--w98-face) !important;
+  box-shadow: var(--w98-raised) !important;
+  border: none !important;
+  padding: 1px 6px !important;
+}
+
+[class*="reactions_"] [class*="reaction_"]:hover {
+  background: var(--w98-face) !important;
+  box-shadow: var(--w98-raised), inset 0 0 0 1px var(--w98-sel) !important;
+}
+
+[class*="reactions_"] [class*="reaction_"]:active,
+[class*="reactions_"] [class*="reactionMe_"] {
+  background: var(--w98-hi-soft) !important;
+  box-shadow: var(--w98-sunken) !important;
+}
+
+[class*="reactions_"] [class*="reactionMe_"] {
+  background-image: repeating-conic-gradient(var(--w98-track-a) 0 25%, var(--w98-track-b) 0 50%) !important;
+  background-size: 2px 2px !important;
+}
+
+[class*="reactions_"] [class*="reactionCount_"] {
+  color: var(--w98-text) !important;
+  font-weight: bold;
+}
+
+[class*="reactions_"] [class*="reactionMe_"] [class*="reactionCount_"] {
+  color: var(--w98-link) !important;
+}
+
+[class*="reactions_"] [class*="reactionBtn_"] {
+  background: var(--w98-face) !important;
+  box-shadow: var(--w98-raised) !important;
+  border: none !important;
+  opacity: 1 !important;
+}
+
+[class*="reactions_"] [class*="reactionBtn_"] svg,
+[class*="reactions_"] [class*="reactionBtn_"] [class*="icon"] {
+  color: var(--w98-text) !important;
+}
+
+
+button[class*="button_"]:not([class*="lookBlank_"]):not([class*="lookLink_"]),
+[class*="lookFilled_"] {
+  background: var(--w98-face) !important;
+  box-shadow: var(--w98-raised) !important;
+  color: var(--w98-text) !important;
+}
+
+button[class*="button_"]:active,
+[class*="lookFilled_"]:active {
+  box-shadow: var(--w98-sunken) !important;
+}
+
+[class*="lookFilled_"] *,
+button[class*="button_"] [class*="contents_"] {
+  color: var(--w98-text) !important;
+}
+
+
+[class*="menu_"], [class*="popout_"], [class*="userPopoutOuter_"],
+[class*="root_"][role="dialog"], [class*="modal_"] {
+  background: var(--w98-face) !important;
+  box-shadow: var(--w98-raised) !important;
+  border: none !important;
+}
+
+[class*="menu_"] [class*="focused_"] {
+  background: var(--w98-sel) !important;
+}
+
+[class*="menu_"] [class*="focused_"],
+[class*="menu_"] [class*="focused_"] * {
+  color: #fff !important;
+}
+
+[class*="profilePanel_"] section,
+[class*="profilePanel_"] [class*="section_"],
+[class*="profilePanel_"] [class*="card_"],
+[class*="profilePanel_"] [class*="collection"],
+[class*="profilePanel_"] [class*="wishlist"],
+[class*="profilePanel_"] [class*="overlay_"],
+[class*="userProfile"] [class*="collection"],
+[class*="userProfile"] [class*="wishlist"],
+[class*="userPopout"] [class*="section_"] {
+  background: var(--w98-face) !important;
+  box-shadow: var(--w98-raised) !important;
+  border: none !important;
+  color: var(--w98-text) !important;
+}
+
+[class*="profilePanel_"] [class*="wishlist"] [class*="item"],
+[class*="userProfile"] [class*="wishlist"] [class*="item"] {
+  background: var(--w98-input) !important;
+  box-shadow: var(--w98-sunken) !important;
+}
+
+
+/* the slider. it lives here. be nice to it :3 */
+::-webkit-scrollbar {
+  border-radius: 0 !important;
+  width: 16px !important;
+  height: 16px !important;
+  background: var(--w98-hi-soft) !important;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+  background-color: var(--w98-hi-soft) !important;
+  background-image: repeating-conic-gradient(var(--w98-track-a) 0 25%, var(--w98-track-b) 0 50%) !important;
+  background-size: 2px 2px !important;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 0 !important;
+  min-height: 20px;
+  border: none !important;
+  background-clip: border-box !important;
+  background-color: var(--w98-face) !important;
+  box-shadow: var(--w98-raised) !important;
+}
+
+::-webkit-scrollbar-button:single-button {
+  border-radius: 0 !important;
+  display: block;
+  width: 16px;
+  height: 16px;
+  background-color: var(--w98-face);
+  box-shadow: var(--w98-raised);
+}
+
+::-webkit-scrollbar-corner {
+  border-radius: 0 !important;
+  background: var(--w98-face) !important;
+}
+
+[class*="scroller_"], [class*="thin_"], [class*="auto_"], [class*="none_"] {
+  scrollbar-width: auto !important;
+  scrollbar-color: auto !important;
+}
